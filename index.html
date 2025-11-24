@@ -95,11 +95,34 @@
             color: #fff;
         }
 
+        .meeting-button {
+            display: inline-block;
+            padding: 12px 24px;
+            background: #0f0f0f;
+            color: #999;
+            text-decoration: none;
+            border: 1px solid #1a1a1a;
+            border-radius: 4px;
+            transition: all 0.2s;
+            font-size: 0.9em;
+            margin-top: 40px;
+        }
+
+        .meeting-button:hover {
+            background: #1a1a1a;
+            border-color: #333;
+            color: #fff;
+        }
+
         .pdf-container {
             text-align: right;
             margin-top: 60px;
             padding-top: 40px;
             border-top: 1px solid #151515;
+            display: flex;
+            justify-content: flex-end;
+            gap: 15px;
+            flex-wrap: wrap;
         }
 
         h3 a {
@@ -325,10 +348,11 @@
             padding: 30px 20px;
             background: #0f0f0f;
             border-left: 2px solid #333;
-            transition: border-color 0.3s;
+            transition: transform 0.3s ease, border-left-color 0.3s ease;
         }
 
         .achievement-card:hover {
+            transform: translateX(4px);
             border-left-color: #666;
         }
 
@@ -432,6 +456,18 @@
 
             .achievement-number {
                 font-size: 1.5em;
+            }
+
+            .pdf-container {
+                flex-direction: column;
+                align-items: flex-end;
+            }
+
+            .meeting-button,
+            .pdf-button {
+                width: 100%;
+                max-width: 200px;
+                text-align: center;
             }
         }
     </style>
@@ -645,8 +681,6 @@
                 <ul class="education-list">
                     <li><strong>Bachelor of Design</strong> — Swinburne University</li>
                     <li><strong>Diploma of Audio Production</strong> — Collarts University</li>
-                    <li><strong>RSA</strong> (Responsible Service of Alcohol)</li>
-                    <li><strong>White Card</strong> — Construction</li>
                 </ul>
             </section>
             <section>
@@ -666,6 +700,7 @@
                 </p>
             </section>
             <div class="pdf-container">
+                <a href="https://calendar.app.google/k9y7V9mU5WbWkgTT8" target="_blank" class="meeting-button">Book a Meeting</a>
                 <a href="javascript:window.print()" class="pdf-button">Download PDF</a>
             </div>
         </div>
