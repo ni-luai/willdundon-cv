@@ -13,6 +13,7 @@
 # Logs
 *.log
 
-# Images (if you want to keep them local only)
-# Images/
+# Images
+Images/
+
 
