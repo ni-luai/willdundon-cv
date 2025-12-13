@@ -413,6 +413,74 @@
             margin-top: 0;
         }
 
+        .photo-toggle-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #0f0f0f;
+            color: #999;
+            text-decoration: none;
+            border: 1px solid #1a1a1a;
+            border-radius: 4px;
+            transition: all 0.2s;
+            font-size: 0.85em;
+            margin-top: 20px;
+            cursor: pointer;
+            font-family: inherit;
+        }
+
+        .photo-toggle-button:hover {
+            background: #1a1a1a;
+            border-color: #333;
+            color: #fff;
+        }
+
+        .photo-gallery-container {
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            transition: max-height 0.4s ease, opacity 0.3s ease, margin-top 0.3s ease;
+            margin-top: 0;
+        }
+
+        .photo-gallery-container.open {
+            max-height: 5000px;
+            opacity: 1;
+            margin-top: 30px;
+        }
+
+        .photo-gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            padding: 20px 0;
+        }
+
+        .photo-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 4px;
+            border: 1px solid #1a1a1a;
+            background: #0f0f0f;
+            aspect-ratio: 4 / 3;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .photo-item:hover {
+            transform: translateY(-2px);
+            border-color: #333;
+        }
+
+        .photo-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: opacity 0.2s ease;
+        }
+
+        .photo-item:hover img {
+            opacity: 0.9;
+        }
 
         @media print {
             body {
@@ -497,6 +565,23 @@
                 width: 100%;
                 max-width: 200px;
                 text-align: center;
+            }
+
+            .photo-gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+
+            .photo-toggle-button {
+                width: 100%;
+                max-width: 200px;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .photo-gallery-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -613,6 +698,106 @@
                         <li>Architected business logic and decision frameworks that automate complex workflows and
                             reduce manual intervention</li>
                     </ul>
+                    <button class="photo-toggle-button" onclick="toggleGallery('earthbanc-gallery')"
+                        aria-expanded="false" aria-controls="earthbanc-gallery">
+                        View Project Photos
+                    </button>
+                    <div id="earthbanc-gallery" class="photo-gallery-container" aria-hidden="true">
+                        <div class="photo-gallery-grid">
+                            <div class="photo-item">
+                                <img src="Images/earthbanc/Will_KenyaTeam.jpeg"
+                                    alt="Earthbanc.io - Kenya team collaboration" loading="lazy">
+                            </div>
+                            <div class="photo-item">
+                                <img src="Images/earthbanc/Will_KenyanMinisters.jpeg"
+                                    alt="Earthbanc.io - Meeting with Kenyan ministers" loading="lazy">
+                            </div>
+                            <div class="photo-item">
+                                <img src="Images/earthbanc/Remote_India_Office.jpeg"
+                                    alt="Earthbanc.io - Remote India office operations" loading="lazy">
+                            </div>
+                            <div class="photo-item">
+                                <img src="Images/earthbanc/Will_rootbridge.jpeg"
+                                    alt="Earthbanc.io - Root bridge project in India" loading="lazy">
+                            </div>
+                            <div class="photo-item">
+                                <img src="Images/earthbanc/KenyaBoardMeeting.jpeg"
+                                    alt="Earthbanc.io - Kenya board meeting" loading="lazy">
+                            </div>
+                            <div class="photo-item">
+                                <img src="Images/earthbanc/Remote_India_techteam.jpeg"
+                                    alt="Earthbanc.io - India tech team collaboration" loading="lazy">
+                            </div>
+                            <div class="photo-item">
+                                <img src="Images/earthbanc/Will_KenyaAgreement.jpeg"
+                                    alt="Earthbanc.io - Kenya agreement signing" loading="lazy">
+                            </div>
+                            <div class="photo-item">
+                                <img src="Images/earthbanc/Will_Indianpeople.jpeg"
+                                    alt="Earthbanc.io - Working with local communities in India" loading="lazy">
+                            </div>
+                            <div class="photo-item">
+                                <img src="Images/earthbanc/Will_KenyaTeamHub.jpeg"
+                                    alt="Earthbanc.io - Kenya team hub operations" loading="lazy">
+                            </div>
+                            <div class="photo-item">
+                                <img src="Images/earthbanc/Will_KenyaTeam2.jpeg"
+                                    alt="Earthbanc.io - Kenya team collaboration" loading="lazy">
+                            </div>
+                            <div class="photo-item">
+                                <img src="Images/earthbanc/KenyaTeam.jpeg" alt="Earthbanc.io - Kenya team"
+                                    loading="lazy">
+                            </div>
+                            <div class="photo-item">
+                                <img src="Images/earthbanc/KenyaTeammeetLodge.jpeg"
+                                    alt="Earthbanc.io - Kenya team meeting at lodge" loading="lazy">
+                            </div>
+                            <div class="photo-item">
+                                <img src="Images/earthbanc/Will_CEO.jpeg" alt="Earthbanc.io - CEO collaboration"
+                                    loading="lazy">
+                            </div>
+                            <div class="photo-item">
+                                <img src="Images/earthbanc/Screenshot 2025-12-08 at 12.16.35 pm.png"
+                                    alt="Earthbanc.io - Tree planting site overview" loading="lazy">
+                            </div>
+                            <div class="photo-item">
+                                <img src="Images/earthbanc/Screenshot 2025-12-08 at 12.17.41 pm.png"
+                                    alt="Earthbanc.io - Nursery and saplings" loading="lazy">
+                            </div>
+                            <div class="photo-item">
+                                <img src="Images/earthbanc/Screenshot 2025-12-08 at 12.17.55 pm.png"
+                                    alt="Earthbanc.io - Field team with planted rows" loading="lazy">
+                            </div>
+                            <div class="photo-item">
+                                <img src="Images/earthbanc/Screenshot 2025-12-08 at 12.20.25 pm.png"
+                                    alt="Earthbanc.io - Reforestation progress view" loading="lazy">
+                            </div>
+                            <div class="photo-item">
+                                <img src="Images/earthbanc/Screenshot 2025-12-08 at 12.20.35 pm.png"
+                                    alt="Earthbanc.io - Tree planting rows detail" loading="lazy">
+                            </div>
+                            <div class="photo-item">
+                                <img src="Images/earthbanc/Screenshot 2025-12-08 at 12.20.49 pm.png"
+                                    alt="Earthbanc.io - Field survey and planting" loading="lazy">
+                            </div>
+                            <div class="photo-item">
+                                <img src="Images/earthbanc/project photo 1.jpeg" alt="Earthbanc.io - Project photo"
+                                    loading="lazy">
+                            </div>
+                            <div class="photo-item">
+                                <img src="Images/earthbanc/IMG_5111.jpeg" alt="Earthbanc.io - Project documentation"
+                                    loading="lazy">
+                            </div>
+                            <div class="photo-item">
+                                <img src="Images/earthbanc/IMG_5333.jpeg" alt="Earthbanc.io - Project documentation"
+                                    loading="lazy">
+                            </div>
+                            <div class="photo-item">
+                                <img src="Images/earthbanc/IMG_5349.jpeg" alt="Earthbanc.io - Project documentation"
+                                    loading="lazy">
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="experience-item">
                     <div class="job-header">
@@ -636,6 +821,150 @@
                         <li>Built company website and directed branding and market expansion for independent electronic
                             music talent</li>
                     </ul>
+                    <button class="photo-toggle-button" onclick="toggleGallery('whitvoir-gallery')"
+                        aria-expanded="false" aria-controls="whitvoir-gallery">
+                        View Project Photos
+                    </button>
+                    <div id="whitvoir-gallery" class="photo-gallery-container" aria-hidden="true">
+                        <div class="photo-gallery-grid">
+                            <div class="photo-item">
+                                <img src="Images/whitvoir/Screenshot 2025-12-08 at 7.16.18 pm.png"
+                                    alt="Whitvoir - artist roster highlights" loading="lazy">
+                            </div>
+                            <div class="photo-item">
+                                <img src="Images/whitvoir/Screenshot 2025-12-08 at 7.27.53 pm.png"
+                                    alt="Whitvoir - marketing overview" loading="lazy">
+                            </div>
+                            <div class="photo-item">
+                                <img src="Images/whitvoir/Screenshot 2025-12-08 at 7.29.27 pm.png"
+                                    alt="Whitvoir - campaign layout" loading="lazy">
+                            </div>
+                            <div class="photo-item">
+                                <img src="Images/whitvoir/Whitvoir-Finals.jpg" alt="Whitvoir - live show finals"
+                                    loading="lazy">
+                            </div>
+                            <div class="photo-item">
+                                <img src="Images/whitvoir/Whitvoir-Finals 1.jpg" alt="Whitvoir - performance still"
+                                    loading="lazy">
+                            </div>
+                            <div class="photo-item">
+                                <img src="Images/whitvoir/Whitvoir-Finals 232.jpg" alt="Whitvoir - artist performance"
+                                    loading="lazy">
+                            </div>
+                            <div class="photo-item">
+                                <img src="Images/whitvoir/Whitvoir-Finals 239.jpg" alt="Whitvoir - stage production"
+                                    loading="lazy">
+                            </div>
+                            <div class="photo-item">
+                                <img src="Images/whitvoir/Whitvoir-Finals 240.jpg" alt="Whitvoir - lighting design"
+                                    loading="lazy">
+                            </div>
+                            <div class="photo-item">
+                                <img src="Images/whitvoir/Whitvoir-Finals 265.jpg" alt="Whitvoir - crowd engagement"
+                                    loading="lazy">
+                            </div>
+                            <div class="photo-item">
+                                <img src="Images/whitvoir/Whitvoir-Finals 266.jpg" alt="Whitvoir - venue production"
+                                    loading="lazy">
+                            </div>
+                            <div class="photo-item">
+                                <img src="Images/whitvoir/Whitvoir-Finals 270.jpg"
+                                    alt="Whitvoir - live music production" loading="lazy">
+                            </div>
+                            <div class="photo-item">
+                                <img src="Images/whitvoir/Whitvoir-Finals 274.jpg" alt="Whitvoir - artist and audience"
+                                    loading="lazy">
+                            </div>
+                            <div class="photo-item">
+                                <img src="Images/whitvoir/Whitvoir-Post 6.jpg" alt="Whitvoir - promo artwork"
+                                    loading="lazy">
+                            </div>
+                            <div class="photo-item">
+                                <img src="Images/whitvoir/Whitvoir-Post 9.jpg" alt="Whitvoir - artist feature"
+                                    loading="lazy">
+                            </div>
+                            <div class="photo-item">
+                                <img src="Images/whitvoir/Whitvoir-Post 13.jpg" alt="Whitvoir - tour announcement"
+                                    loading="lazy">
+                            </div>
+                            <div class="photo-item">
+                                <img src="Images/whitvoir/Whitvoir-Post 14.jpg" alt="Whitvoir - artist spotlight"
+                                    loading="lazy">
+                            </div>
+                            <div class="photo-item">
+                                <img src="Images/whitvoir/Whitvoir-Post 18.jpg" alt="Whitvoir - event showcase"
+                                    loading="lazy">
+                            </div>
+                            <div class="photo-item">
+                                <img src="Images/whitvoir/Whitvoir-Post 21.jpg" alt="Whitvoir - event marketing"
+                                    loading="lazy">
+                            </div>
+                            <div class="photo-item">
+                                <img src="Images/whitvoir/Whitvoir-Post 29.jpg" alt="Whitvoir - lineup highlight"
+                                    loading="lazy">
+                            </div>
+                            <div class="photo-item">
+                                <img src="Images/whitvoir/Whitvoir-Post 32.jpg" alt="Whitvoir - campaign creative"
+                                    loading="lazy">
+                            </div>
+                            <div class="photo-item">
+                                <img src="Images/whitvoir/Whitvoir-Post 35.jpg" alt="Whitvoir - tour visuals"
+                                    loading="lazy">
+                            </div>
+                            <div class="photo-item">
+                                <img src="Images/whitvoir/Whitvoir-Post 38.jpg" alt="Whitvoir - show recap visuals"
+                                    loading="lazy">
+                            </div>
+                            <div class="photo-item">
+                                <img src="Images/whitvoir/Whitvoir-Post 53.jpg" alt="Whitvoir - artist spotlight"
+                                    loading="lazy">
+                            </div>
+                            <div class="photo-item">
+                                <img src="Images/whitvoir/Whitvoir-Post 58.jpg" alt="Whitvoir - brand creative"
+                                    loading="lazy">
+                            </div>
+                            <div class="photo-item">
+                                <img src="Images/whitvoir/Whitvoir-Post 63.jpg" alt="Whitvoir - performance artwork"
+                                    loading="lazy">
+                            </div>
+                            <div class="photo-item">
+                                <img src="Images/whitvoir/Whitvoir-Post 66.jpg" alt="Whitvoir - campaign graphic"
+                                    loading="lazy">
+                            </div>
+                            <div class="photo-item">
+                                <img src="Images/whitvoir/Whitvoir-Post 70.jpg" alt="Whitvoir - campaign creative"
+                                    loading="lazy">
+                            </div>
+                            <div class="photo-item">
+                                <img src="Images/whitvoir/IMG_6800.jpeg" alt="Whitvoir - event photography"
+                                    loading="lazy">
+                            </div>
+                            <div class="photo-item">
+                                <img src="Images/whitvoir/Screenshot 2025-12-08 at 7.41.50 pm.png"
+                                    alt="Whitvoir - production overview" loading="lazy">
+                            </div>
+                            <div class="photo-item">
+                                <img src="Images/whitvoir/Screenshot 2025-12-08 at 7.42.11 pm.png"
+                                    alt="Whitvoir - event production" loading="lazy">
+                            </div>
+                            <div class="photo-item">
+                                <img src="Images/whitvoir/Screenshot 2025-12-08 at 7.42.43 pm.png"
+                                    alt="Whitvoir - live performance" loading="lazy">
+                            </div>
+                            <div class="photo-item">
+                                <img src="Images/whitvoir/Screenshot 2025-12-08 at 7.43.36 pm.png"
+                                    alt="Whitvoir - stage setup" loading="lazy">
+                            </div>
+                            <div class="photo-item">
+                                <img src="Images/whitvoir/Screenshot 2025-12-08 at 7.46.39 pm.png"
+                                    alt="Whitvoir - production detail" loading="lazy">
+                            </div>
+                            <div class="photo-item">
+                                <img src="Images/whitvoir/Screenshot 2025-12-08 at 8.06.19 pm.png"
+                                    alt="Whitvoir - event showcase" loading="lazy">
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="experience-item">
                     <div class="job-header">
@@ -663,6 +992,90 @@
                             editing, graphics, and audio production for TV productions (7-Mate), with Avid Media
                             Composer training</li>
                     </ul>
+                    <button class="photo-toggle-button" onclick="toggleGallery('events-gallery')" aria-expanded="false"
+                        aria-controls="events-gallery">
+                        View Project Photos
+                    </button>
+                    <div id="events-gallery" class="photo-gallery-container" aria-hidden="true">
+                        <div class="photo-gallery-grid">
+                            <div class="photo-item">
+                                <img src="Images/events/Screenshot 2025-12-08 at 7.45.07 pm.png"
+                                    alt="Event operations - stage production overview" loading="lazy">
+                            </div>
+                            <div class="photo-item">
+                                <img src="Images/events/Screenshot 2025-12-08 at 7.47.13 pm.png"
+                                    alt="Event operations - lighting design" loading="lazy">
+                            </div>
+                            <div class="photo-item">
+                                <img src="Images/events/Screenshot 2025-12-08 at 7.48.28 pm.png"
+                                    alt="Event operations - artist performance" loading="lazy">
+                            </div>
+                            <div class="photo-item">
+                                <img src="Images/events/Screenshot 2025-12-08 at 7.49.19 pm.png"
+                                    alt="Event operations - crowd engagement" loading="lazy">
+                            </div>
+                            <div class="photo-item">
+                                <img src="Images/events/Screenshot 2025-12-08 at 7.49.44 pm.png"
+                                    alt="Event operations - festival night stage" loading="lazy">
+                            </div>
+                            <div class="photo-item">
+                                <img src="Images/events/Screenshot 2025-12-08 at 7.50.06 pm.png"
+                                    alt="Event operations - production setup" loading="lazy">
+                            </div>
+                            <div class="photo-item">
+                                <img src="Images/events/Screenshot 2025-12-08 at 7.50.35 pm.png"
+                                    alt="Event operations - audience view" loading="lazy">
+                            </div>
+                            <div class="photo-item">
+                                <img src="Images/events/Screenshot 2025-12-08 at 7.51.38 pm.png"
+                                    alt="Event operations - stage lighting wash" loading="lazy">
+                            </div>
+                            <div class="photo-item">
+                                <img src="Images/events/Screenshot 2025-12-08 at 7.51.43 pm.png"
+                                    alt="Event operations - artist closeup" loading="lazy">
+                            </div>
+                            <div class="photo-item">
+                                <img src="Images/events/Screenshot 2025-12-08 at 7.52.09 pm.png"
+                                    alt="Event operations - crowd energy" loading="lazy">
+                            </div>
+                            <div class="photo-item">
+                                <img src="Images/events/Screenshot 2025-12-08 at 7.52.49 pm.png"
+                                    alt="Event operations - stage rigging" loading="lazy">
+                            </div>
+                            <div class="photo-item">
+                                <img src="Images/events/Screenshot 2025-12-08 at 7.52.59 pm.png"
+                                    alt="Event operations - artist and visuals" loading="lazy">
+                            </div>
+                            <div class="photo-item">
+                                <img src="Images/events/Screenshot 2025-12-08 at 7.53.30 pm.png"
+                                    alt="Event operations - outdoor crowd" loading="lazy">
+                            </div>
+                            <div class="photo-item">
+                                <img src="Images/events/Screenshot 2025-12-08 at 7.53.51 pm.png"
+                                    alt="Event operations - night production" loading="lazy">
+                            </div>
+                            <div class="photo-item">
+                                <img src="Images/events/Screenshot 2025-12-08 at 7.54.31 pm.png"
+                                    alt="Event operations - live production detail" loading="lazy">
+                            </div>
+                            <div class="photo-item">
+                                <img src="Images/events/Screenshot 2025-12-08 at 7.54.52 pm.png"
+                                    alt="Event operations - artist backline" loading="lazy">
+                            </div>
+                            <div class="photo-item">
+                                <img src="Images/events/Screenshot 2025-12-08 at 7.55.06 pm.png"
+                                    alt="Event operations - lighting focus" loading="lazy">
+                            </div>
+                            <div class="photo-item">
+                                <img src="Images/events/Screenshot 2025-12-08 at 7.55.26 pm.png"
+                                    alt="Event operations - crowd perspective" loading="lazy">
+                            </div>
+                            <div class="photo-item">
+                                <img src="Images/events/Screenshot 2025-12-08 at 7.55.36 pm.png"
+                                    alt="Event operations - finale moment" loading="lazy">
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </section>
             <section>
@@ -742,6 +1155,39 @@
             </div>
         </div>
     </div>
+    <script>
+        function toggleGallery(galleryId) {
+            const gallery = document.getElementById(galleryId);
+            const button = gallery.previousElementSibling;
+            const isOpen = gallery.classList.contains('open');
+
+            if (isOpen) {
+                gallery.classList.remove('open');
+                gallery.setAttribute('aria-hidden', 'true');
+                button.setAttribute('aria-expanded', 'false');
+                button.textContent = 'View Project Photos';
+            } else {
+                gallery.classList.add('open');
+                gallery.setAttribute('aria-hidden', 'false');
+                button.setAttribute('aria-expanded', 'true');
+                button.textContent = 'Hide Photos';
+            }
+        }
+
+        // Add keyboard accessibility
+        document.addEventListener('DOMContentLoaded', function () {
+            const toggleButtons = document.querySelectorAll('.photo-toggle-button');
+            toggleButtons.forEach(button => {
+                button.addEventListener('keydown', function (e) {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        const galleryId = button.getAttribute('onclick').match(/'([^']+)'/)[1];
+                        toggleGallery(galleryId);
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 
 </html>
